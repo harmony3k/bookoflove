@@ -1,22 +1,88 @@
-<!-- index.html with custom sidebar style -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tổng Quan Đám Cưới</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner</title>
+    <!-- TailwindCSS chỉ dùng cho nội dung, sidebar sẽ dùng style.css riêng -->
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    
+    <!-- Link đến file CSS tùy chỉnh MỚI -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Thư viện biểu đồ ECharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    
+    <!-- Link đến file JavaScript chính -->
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="navbar" id="sidebar">
-    <!-- Sidebar HTML sẽ được nạp động từ sidebar.html -->
-  </div>
-  <div class="dashboard" id="main-content">
-    <!-- Nội dung chính sẽ load tại đây -->
-  </div>
-  <script src="main.js"></script>
+
+<!-- Sidebar có thể thu gọn -->
+<nav class="sidebar">
+    <div class="sidebar-container">
+        <!-- Header: Logo và Nút gạt -->
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-logo-link">
+                <h3 class="font-brand">WeddingPlan</h3>
+            </a>
+            <button class="sidebar-toggler">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+
+        <!-- Menu điều hướng -->
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="#tong-quan" class="nav-link menu-link" data-page="tong-quan">
+                    <i class="ri-dashboard-fill ri-lg"></i>
+                    <span class="menu-link-text">Tổng quan</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#su-kien" class="nav-link menu-link" data-page="su-kien">
+                    <i class="ri-calendar-event-line ri-lg"></i>
+                    <span class="menu-link-text">Sự kiện</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#cong-viec" class="nav-link menu-link" data-page="cong-viec">
+                    <i class="ri-task-line ri-lg"></i>
+                    <span class="menu-link-text">Công việc</span>
+                </a>
+            </li>
+            <!-- Thêm các link khác tương tự -->
+        </ul>
+    </div>
+
+    <!-- User Info -->
+    <div class="user-container">
+        <div class="user-info">
+            <img src="https://i.pravatar.cc/48?u=groom" alt="Chú rể" class="user-avatar">
+            <div class="user-details">
+                <span class="user-name">Văn Khuê</span>
+                <span class="user-occupation">Chú rể</span>
+            </div>
+        </div>
+        <a href="#" class="logout-link">
+            <i class="ri-logout-box-r-line"></i>
+        </a>
+    </div>
+</nav>
+
+<!-- Khu vực nội dung chính -->
+<main id="dashboard" class="dashboard">
+    <div id="main-content" class="p-6">
+      <!-- Nội dung sẽ được tải vào đây bằng JavaScript -->
+      <div class="flex items-center justify-center h-full">
+        <p class="text-gray-500">Đang tải trang...</p>
+      </div>
+    </div>
+</main>
+
 </body>
 </html>

@@ -1,73 +1,37 @@
 /* style.css */
 
+/* Biến màu và font chữ */
 :root {
-  --body-bg-color: #dce4e3;
-  --green: #18c29c;
-  --light-green: #8ed7c6;
-  --light-grey: #dce4e3;
-  --text-color: #084236;
+    --sidebar-bg-color: #18c29c; /* green */
+    --body-bg-color: #f8fafc; /* bg-gray-50 */
+    --text-color: #ffffff;
+    --text-color-dark: #084236;
+    --hover-color: #dce4e3; /* light-grey */
+    --user-bg-color: #8ed7c6; /* light-green */
+    --sidebar-width-collapsed: 80px;
+    --sidebar-width-expanded: 260px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-button, input {
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-li {
-  list-style: none;
-}
-
-body {
-  background-color: var(--body-bg-color);
-  color: var(--text-color);
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  height: 100vh;
-}
-
-/* Sidebar styles như đã gửi ở trên */
-/* ... (dán đoạn CSS bạn đã gửi) ... */
-/*css variables*/
-:root {
-    --body-bg-color: #dce4e3;
-    --green: #18c29c;
-    --light-green: #8ed7c6;
-    --light-grey: #dce4e3;
-    --text-color: #084236;
-}
-
-/*reset*/
+/* Reset cơ bản */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-button {
-    border: none;
-    outline: none;
-    background: none; 
-    cursor: pointer;
+body {
+    background-color: var(--body-bg-color);
+    color: var(--text-color-dark); 
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow-x: hidden;
 }
 
-input {
+button, input {
     border: none; 
     outline: none;
     background: none; 
+    cursor: pointer;
 }
 
 a {
@@ -79,263 +43,227 @@ li {
     list-style: none;
 }
 
-/*body*/
-body {
-    background-color: var(--body-bg-color);
-    color: var(--text-color); 
-    width: 100vw; 
-    height: auto; 
-    font-family: 'Poppins', sans-serif;
-    position: relative;
+.font-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: var(--text-color);
 }
 
-
-/*navbar*/
-.navbar {
-    z-index: 2;
-    width: 80px;
-    max-width: 4rem;
-    background-color: var(--green);
+/* --- Sidebar --- */
+.sidebar {
+    z-index: 100;
+    width: var(--sidebar-width-collapsed);
+    background-color: var(--sidebar-bg-color);
+    color: var(--text-color);
     height: 100vh; 
     position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all .3s ease;
+    transition: width 0.3s ease;
 }
 
-
-.navbar .navbar-container {
+.sidebar-container {
     padding: 1rem; 
 }
 
-/*logo*/
-.navbar .navbar-container .navbar-logo-div {    
+/* Header sidebar */
+.sidebar-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.7rem;
-    /* padding-left: 1rem; */
+    margin-bottom: 2rem;
+    min-height: 48px; /* Giữ chiều cao ổn định */
 }
 
-.navbar .navbar-container .navbar-logo-div .navbar-toggler {
-    transition: .2s ease-in-out;
+.sidebar-logo-link {
+    display: none; /* Ẩn logo khi thu gọn */
 }
 
-.navbar .navbar-container .navbar-logo-div .navbar-toggler i { 
-  font-size: 1rem; 
+.sidebar-toggler {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.2s ease-in-out;
+}
+.sidebar-toggler:hover {
+    color: var(--hover-color);
 }
 
-.navbar .navbar-container .navbar-logo-div .navbar-toggler:hover {
-    color: var(--light-grey);
-}
-
-.navbar .navbar-container .navbar-logo-div .navbar-logo-link {
-    display: none; 
-}
-
-/*search*/
-.navbar .navbar-search {
-    width: 100%;
-    background-image: url('../img/search.svg');
-    background-repeat: no-repeat;
-    background-color: var(--light-green);
-    background-position: center;
-    
-    margin: 0 auto; 
-    /* background-position: 1rem 0.7rem; */
-    padding: 1rem;
-    /* padding-left: 3rem; */
-    border-radius: 10px; 
-    margin-bottom: 1.2rem; 
-}
-
-#icon-search {
-  position: absolute; 
-  color: var(--green);
-  font-size: 1.2rem;
-  top: 4.5rem; 
-  left: 1.4rem;
-}
-
-.navbar .navbar-search::placeholder { 
-    visibility: hidden;  
-    opacity: 0;
-}
-
-/*menu list*/
-.navbar .menu-list {
+/* Menu */
+.menu-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    width: 100%;
+    gap: 1rem;
 }
 
-.navbar .menu-list .menu-item {    
-    width: 100%;
-}
-
-
-.navbar .menu-list .menu-item  .menu-link{    
+.menu-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem; 
-    transition: 0.2s ease-in-out; 
+    padding: 0.75rem;
+    border-radius: 8px;
+    gap: 1rem; 
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; 
     font-weight: 500;
+    white-space: nowrap; /* Ngăn text xuống dòng */
 }
 
-
-.navbar .menu-list .menu-item  .menu-link .menu-link-text{   
-    display: none;
-    color: inherit; 
+.menu-link i {
+    font-size: 1.5rem;
+    min-width: 24px; /* Giữ icon ổn định */
 }
 
-.navbar .menu-list .menu-item  .menu-link:hover,
-.navbar .menu-list .menu-item  .menu-link:hover
-{
-    color: var(--light-grey); 
+.menu-link:hover {
+    background-color: var(--user-bg-color);
+    color: var(--text-color-dark);
 }
 
-/*user information div*/
-.navbar .user-container {
-    background-color: var(--light-green); 
+.menu-link.active {
+    background-color: var(--hover-color);
+    color: var(--text-color-dark);
+    font-weight: 700;
+}
+
+.menu-link-text {
+    display: none; /* Ẩn text khi thu gọn */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* User container */
+.user-container {
+    background-color: var(--user-bg-color);
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
 }
 
-.navbar .user-container .user-info {
-    display: flex;
-  align-items: center;
-    gap: 0.4rem;
+.user-info, .user-details {
     display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
-.navbar .user-container .user-info i {
-    font-size: 1.2rem;
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.navbar .user-container .user-info .user-details .user-name {
-    font-size: 1.1rem;
-    font-weight: light;
-}
-
-.navbar .user-container .user-info .user-details .user-occupation {
-    font-size: 0.9rem;
-    font-weight: lighter;
+.logout-link {
+    font-size: 1.5rem;
+    color: var(--text-color-dark);
 }
 
 
-
-/*navbar.active*/
-/*navbar.active navbar*/
-.navbar.active {
-    width: 350px; 
-    max-width: 20%; 
+/* --- Trạng thái Sidebar Mở rộng (.active) --- */
+.sidebar.active {
+    width: var(--sidebar-width-expanded);
 }
 
-/*navbar.active logo*/
-.navbar.active .navbar-container .navbar-logo-div {  
+.sidebar.active .sidebar-header {
     justify-content: space-between;
-    padding-left: 1rem; 
 }
 
-.navbar.active .navbar-container .navbar-logo-div .navbar-logo-link {
-    display: block; 
+.sidebar.active .sidebar-logo-link {
+    display: block;
 }
 
-/*navbar.active search input*/
-.navbar.active .navbar-search {
-    background-position: 1rem 0.7rem;
-    padding: 1rem;
-    padding-left: 3rem;
-}
-
-.navbar.active #icon-search {
-  top: 5.1rem; 
-  left: 1.6rem;
-}
-
-.navbar.active .navbar-search::placeholder { 
-    visibility: visible;  
-    opacity: 1;
-}
-
-/*navbar.active menu*/
-.navbar.active .menu-list { 
-    padding-left: 1rem;
-}
-
-.navbar.active .menu-list .menu-item  .menu-link {
+.sidebar.active .menu-link {
     justify-content: flex-start;
 }
 
-.navbar.active .menu-list .menu-item  .menu-link .menu-link-text{   
+.sidebar.active .menu-link-text {
     display: inline;
+    opacity: 1;
 }
 
-/*navbar.active user container*/
-.navbar.active .user-container {
+.sidebar.active .user-container {
     justify-content: space-between;
+}
+
+.sidebar.active .user-info {
+    display: flex;
     align-items: center;
+    gap: 0.75rem;
+    opacity: 1;
+}
+.sidebar.active .user-details {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color-dark);
+    opacity: 1;
+}
+.sidebar.active .user-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.sidebar.active .user-occupation {
+    font-size: 0.75rem;
+}
+.sidebar.active .logout-link {
+    display: block;
 }
 
-.navbar.active .user-container .user-info {
-    display: flex; 
-}
 
-
-/*dashboard*/
+/* --- Dashboard (Nội dung chính) --- */
 .dashboard { 
-    width: auto;
-    height: auto; 
-    margin-left: 5rem;
+    margin-left: var(--sidebar-width-collapsed);
+    width: calc(100% - var(--sidebar-width-collapsed));
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.navbar.active + .dashboard {
-    margin-left: 22%; 
+.sidebar.active + .dashboard {
+    margin-left: var(--sidebar-width-expanded);
+    width: calc(100% - var(--sidebar-width-expanded));
 }
 
-
-
-/*media queries*/
-@media only screen and (max-width: 870px) {
-    .navbar.active {
-        max-width: 27%; 
+/* --- Responsive --- */
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        overflow: hidden; /* Ẩn sidebar hoàn toàn trên mobile */
     }
-
-    .navbar.active + .dashboard { 
-        margin-left: 30%;
+    .sidebar.active {
+        width: var(--sidebar-width-expanded); /* Khi active thì hiện ra */
     }
-} 
-
-@media only screen and (max-width: 670px) { 
-    .navbar.active { 
-        min-width: 100%;        
-    }
-
-    .navbar .navbar-container {
-        position: relative;
+    
+    .dashboard {
+        margin-left: 0;
         width: 100%;
     }
-
-    .navbar .navbar-search { 
-        position: absolute;
-        border-radius: 0;
-        left: 0;
+    
+    /* Trên mobile, khi sidebar active, nó sẽ đẩy nội dung qua */
+    .sidebar.active + .dashboard {
+        margin-left: var(--sidebar-width-expanded);
+        width: calc(100% - var(--sidebar-width-expanded));
     }
 
-    .navbar .menu-item {
-        position: relative;
-        top: 4rem;
+    /* Để nút toggler luôn hiển thị, ta cần một wrapper khác */
+    /* Tuy nhiên, để đơn giản, ta sẽ đặt nút toggler vào header của dashboard */
+    /* Hoặc cách đơn giản hơn: sidebar sẽ overlay nội dung thay vì đẩy */
+    .sidebar {
+        /* Chỉnh sửa lại cho mobile: overlay */
+        width: var(--sidebar-width-expanded);
+        transform: translateX(calc(-1 * var(--sidebar-width-expanded)));
+        transition: transform 0.3s ease;
     }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .dashboard {
+        margin-left: 0;
+        width: 100%;
+    }
+    .sidebar.active + .dashboard {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    /* Vì sidebar overlay, ta cần một nút gạt bên ngoài */
+    /* Giải pháp đơn giản nhất là giữ nguyên hành vi đẩy nội dung và chấp nhận layout bị co lại */
 }
-
-@media only screen and (max-width: 350px) { 
-    .dashboard .title {
-        font-size: 1.7rem;
-    }
-}  
