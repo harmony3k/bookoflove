@@ -3,11 +3,31 @@
 // Hàm khởi tạo tương tác cho sidebar
 function initializeSidebarInteractions() {
     const sidebar = document.querySelector('.sidebar');
-    const sidebarToggler = document.querySelector('.sidebar-toggler');
+    // Lấy TẤT CẢ các nút gạt (cả trên desktop và mobile)
+    const sidebarTogglers = document.querySelectorAll('.sidebar-toggler');
+    const overlay = document.querySelector('.sidebar-overlay');
 
-    if (sidebar && sidebarToggler) {
-        sidebarToggler.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
+    if (sidebar && sidebarTogglers.length > 0) {
+        // Gắn sự kiện cho mỗi nút
+        sidebarTogglers.forEach(toggler => {
+            toggler.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        });
+    }
+
+    // Thêm sự kiện để đóng sidebar khi click vào lớp phủ
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+    }
+}
+
+    // Thêm sự kiện để đóng sidebar khi click vào lớp phủ
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
         });
     }
 }
