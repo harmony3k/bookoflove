@@ -125,6 +125,7 @@ li {
 }
 
 .menu-link-text {
+    font-family: 'Inter', sans-serif;
     display: none; /* Ẩn text khi thu gọn */
     opacity: 0;
     transition: opacity 0.2s ease;
