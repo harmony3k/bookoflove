@@ -1,55 +1,56 @@
-/* style.css */
+/* style.css (Cập nhật hoàn chỉnh) */
 
-/* Biến màu và font chữ */
+/* Biến màu và font chữ (giữ nguyên) */
 :root {
-    --sidebar-bg-color: #18c29c; /* green */
-    --body-bg-color: #f8fafc; /* bg-gray-50 */
+    --sidebar-bg-color: #18c29c;
+    --body-bg-color: #f8fafc;
     --text-color: #ffffff;
-    --text-color-dark: #000000;
-    --hover-color: #dce4e3; /* light-grey */
-    --user-bg-color: #8ed7c6; /* light-green */
+    --text-color-dark: #084236;
+    --hover-color: #dce4e3;
+    --user-bg-color: #8ed7c6;
     --sidebar-width-collapsed: 80px;
     --sidebar-width-expanded: 260px;
+    --mobile-header-height: 60px; /* Thêm biến chiều cao header mobile */
 }
 
-/* Reset cơ bản */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset và các style cơ bản (giữ nguyên) */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--body-bg-color); color: var(--text-color-dark); font-family: 'Poppins', sans-serif; position: relative; overflow-x: hidden; }
+button, input { border: none; outline: none; background: none; cursor: pointer; }
+a { text-decoration: none; color: inherit; }
+li { list-style: none; }
+.font-brand { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: var(--text-color); }
 
-body {
-    background-color: var(--body-bg-color);
-    color: var(--text-color-dark); 
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    overflow-x: hidden;
-}
-
-button, input {
-    border: none; 
-    outline: none;
-    background: none; 
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-li {
-    list-style: none;
-}
-
-.font-brand {
-    font-family: 'Pacifico', cursive;
-    font-size: 1.5rem;
+/* --- Header cho Mobile (MỚI) --- */
+.mobile-header {
+    display: none; /* Mặc định ẩn trên desktop */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--mobile-header-height);
+    background-color: var(--sidebar-bg-color);
     color: var(--text-color);
+    z-index: 90;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* --- Sidebar --- */
+.mobile-header .font-brand {
+    font-size: 1.2rem;
+}
+
+.user-avatar-mobile {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* --- Sidebar (CSS cho Desktop) --- */
 .sidebar {
     z-index: 100;
     width: var(--sidebar-width-collapsed);
@@ -62,154 +63,38 @@ li {
     justify-content: space-between;
     transition: width 0.3s ease;
 }
+/* ... các style .sidebar-container, .sidebar-header, .menu-list, .user-container giữ nguyên như cũ ... */
+.sidebar-container { padding: 1rem; }
+.sidebar-header { display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; min-height: 48px; }
+.sidebar-logo-link { display: none; }
+.sidebar-toggler { font-size: 1.5rem; color: var(--text-color); transition: color 0.2s ease-in-out; }
+.sidebar-toggler:hover { color: var(--hover-color); }
+.menu-list { display: flex; flex-direction: column; gap: 1rem; }
+.menu-link { display: flex; align-items: center; justify-content: center; padding: 0.75rem; border-radius: 8px; gap: 1rem; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; font-weight: 500; white-space: nowrap; }
+.menu-link i { font-size: 1.5rem; min-width: 24px; }
+.menu-link:hover { background-color: var(--user-bg-color); color: var(--text-color-dark); }
+.menu-link.active { background-color: var(--hover-color); color: var(--text-color-dark); font-weight: 700; }
+.menu-link-text { font-family: 'Inter', sans-serif; display: none; opacity: 0; transition: opacity 0.2s ease; }
+.user-container { background-color: var(--user-bg-color); padding: 1rem; display: flex; align-items: center; justify-content: center; }
+.user-info, .user-details { display: none; opacity: 0; transition: opacity 0.2s ease; }
+.user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.logout-link { font-size: 1.5rem; color: var(--text-color-dark); }
 
-.sidebar-container {
-    padding: 1rem; 
-}
-
-/* Header sidebar */
-.sidebar-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
-    min-height: 48px; /* Giữ chiều cao ổn định */
-}
-
-.sidebar-logo-link {
-    display: none; /* Ẩn logo khi thu gọn */
-}
-
-.sidebar-toggler {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    transition: color 0.2s ease-in-out;
-}
-.sidebar-toggler:hover {
-    color: var(--hover-color);
-}
-
-/* Menu */
-.menu-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.menu-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem;
-    border-radius: 8px;
-    gap: 1rem; 
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; 
-    font-weight: 500;
-    white-space: nowrap; /* Ngăn text xuống dòng */
-}
-
-.menu-link i {
-    font-size: 1.5rem;
-    min-width: 24px; /* Giữ icon ổn định */
-}
-
-.menu-link:hover {
-    background-color: var(--user-bg-color);
-    color: var(--text-color-dark);
-}
-
-.menu-link.active {
-    background-color: var(--hover-color);
-    color: var(--text-color-dark);
-    font-weight: 700;
-}
-
-.menu-link-text {
-    font-family: 'Inter', sans-serif;
-    display: none; /* Ẩn text khi thu gọn */
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-/* User container */
-.user-container {
-    background-color: var(--user-bg-color);
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user-info, .user-details {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.logout-link {
-    font-size: 1.5rem;
-    color: var(--text-color-dark);
-}
+/* --- Trạng thái Sidebar Mở rộng (Desktop) --- */
+.sidebar.active { width: var(--sidebar-width-expanded); }
+.sidebar.active .sidebar-header { justify-content: space-between; }
+.sidebar.active .sidebar-logo-link { display: block; }
+.sidebar.active .menu-link { justify-content: flex-start; }
+.sidebar.active .menu-link-text { display: inline; opacity: 1; }
+.sidebar.active .user-container { justify-content: space-between; }
+.sidebar.active .user-info { display: flex; align-items: center; gap: 0.75rem; opacity: 1; }
+.sidebar.active .user-details { display: flex; flex-direction: column; color: var(--text-color-dark); opacity: 1; }
+.sidebar.active .user-name { font-size: 0.9rem; font-weight: bold; }
+.sidebar.active .user-occupation { font-size: 0.75rem; }
+.sidebar.active .logout-link { display: block; }
 
 
-/* --- Trạng thái Sidebar Mở rộng (.active) --- */
-.sidebar.active {
-    width: var(--sidebar-width-expanded);
-}
-
-.sidebar.active .sidebar-header {
-    justify-content: space-between;
-}
-
-.sidebar.active .sidebar-logo-link {
-    display: block;
-}
-
-.sidebar.active .menu-link {
-    justify-content: flex-start;
-}
-
-.sidebar.active .menu-link-text {
-    display: inline;
-    opacity: 1;
-}
-
-.sidebar.active .user-container {
-    justify-content: space-between;
-}
-
-.sidebar.active .user-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    opacity: 1;
-}
-.sidebar.active .user-details {
-    display: flex;
-    flex-direction: column;
-    color: var(--text-color-dark);
-    opacity: 1;
-}
-.sidebar.active .user-name {
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-.sidebar.active .user-occupation {
-    font-size: 0.75rem;
-}
-.sidebar.active .logout-link {
-    display: block;
-}
-
-
-/* --- Dashboard (Nội dung chính) --- */
+/* --- Dashboard (Nội dung chính - Desktop) --- */
 .dashboard { 
     margin-left: var(--sidebar-width-collapsed);
     width: calc(100% - var(--sidebar-width-collapsed));
@@ -217,54 +102,68 @@ li {
     height: 100vh;
     overflow-y: auto;
 }
-
 .sidebar.active + .dashboard {
     margin-left: var(--sidebar-width-expanded);
     width: calc(100% - var(--sidebar-width-expanded));
 }
 
-/* --- Responsive --- */
+
+/* --- Lớp phủ nền (MỚI) --- */
+.sidebar-overlay {
+    display: none; /* Mặc định ẩn */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99; /* Nằm dưới sidebar nhưng trên dashboard */
+}
+
+/* ======================================================= */
+/* --- Responsive cho màn hình Mobile (<= 768px) --- */
+/* ======================================================= */
 @media only screen and (max-width: 768px) {
-    .sidebar {
-        width: 0;
-        overflow: hidden; /* Ẩn sidebar hoàn toàn trên mobile */
-    }
-    .sidebar.active {
-        width: var(--sidebar-width-expanded); /* Khi active thì hiện ra */
-    }
-    
-    .dashboard {
-        margin-left: 0;
-        width: 100%;
-    }
-    
-    /* Trên mobile, khi sidebar active, nó sẽ đẩy nội dung qua */
-    .sidebar.active + .dashboard {
-        margin-left: var(--sidebar-width-expanded);
-        width: calc(100% - var(--sidebar-width-expanded));
+    /* Hiện header mobile, ẩn sidebar desktop ban đầu */
+    .mobile-header {
+        display: flex;
     }
 
-    /* Để nút toggler luôn hiển thị, ta cần một wrapper khác */
-    /* Tuy nhiên, để đơn giản, ta sẽ đặt nút toggler vào header của dashboard */
-    /* Hoặc cách đơn giản hơn: sidebar sẽ overlay nội dung thay vì đẩy */
+    /* Biến sidebar thành menu trượt từ bên trái */
     .sidebar {
-        /* Chỉnh sửa lại cho mobile: overlay */
-        width: var(--sidebar-width-expanded);
+        width: var(--sidebar-width-expanded); /* Luôn có chiều rộng khi hiện */
         transform: translateX(calc(-1 * var(--sidebar-width-expanded)));
         transition: transform 0.3s ease;
+        /* Luôn ở trạng thái mở rộng về giao diện */
+        justify-content: space-between;
     }
+    .sidebar .sidebar-header { justify-content: space-between; }
+    .sidebar .sidebar-logo-link { display: block; }
+    .sidebar .menu-link { justify-content: flex-start; }
+    .sidebar .menu-link-text { display: inline; opacity: 1; }
+    .sidebar .user-container { justify-content: space-between; }
+    .sidebar .user-info { display: flex; align-items: center; gap: 0.75rem; opacity: 1; }
+    .sidebar .user-details { display: flex; flex-direction: column; color: var(--text-color-dark); opacity: 1; }
+    .sidebar .user-name { font-size: 0.9rem; font-weight: bold; }
+    .sidebar .user-occupation { font-size: 0.75rem; }
+    .sidebar .logout-link { display: block; }
+
+    /* Khi sidebar có class .active (do JS thêm vào) */
     .sidebar.active {
         transform: translateX(0);
+        box-shadow: 4px 0 15px rgba(0,0,0,0.2);
     }
+    
+    /* Hiện lớp phủ khi sidebar active */
+    .sidebar.active + .mobile-header + .dashboard + .sidebar-overlay {
+        display: block;
+    }
+    
+    /* Nội dung chính sẽ bắt đầu bên dưới header mobile */
     .dashboard {
         margin-left: 0;
         width: 100%;
+        padding-top: var(--mobile-header-height);
+        height: 100vh;
     }
-    .sidebar.active + .dashboard {
-        margin-left: 0;
-        width: 100%;
-    }
-    
-    /* Vì sidebar overlay, ta cần một nút gạt bên ngoài */
-    /* Giải pháp đơn giản nhất là giữ nguyên hành vi đẩy nội dung và chấp nhận layout bị co lại */
 }
