@@ -6,6 +6,35 @@
     <title>Wedding Planner</title>
     <!-- TailwindCSS chỉ dùng cho nội dung, sidebar sẽ dùng style.css riêng -->
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+     <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { 
+              'primary': '#2563eb',        // Tương đương blue-600
+              'primary-light': '#60a5fa', // Tương đương blue-400
+              'secondary': '#f472b6'      // Màu hồng
+            },
+            fontFamily: {
+                'sans': ['Inter', 'sans-serif'],
+                'brand': ['Pacifico', 'cursive']
+            },
+            borderRadius: {
+              'none':'0', 
+              'sm':'4px', 
+              DEFAULT:'8px', 
+              'md':'12px', 
+              'lg':'16px', 
+              'xl':'20px', 
+              '2xl':'24px', 
+              '3xl':'32px', 
+              'full':'9999px', 
+              'button':'8px'
+            }
+          }
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
