@@ -86,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // ================================================================
 // HÀM KHỞI TẠO CHO TRANG TỔNG QUAN
 // ================================================================
+// ================================================================
+// HÀM KHỞI TẠO CHO TRANG TỔNG QUAN (ĐÃ SỬA)
+// ================================================================
 function initializeTongQuanPage() {
     console.log("Khởi tạo script cho trang Tổng Quan...");
     
@@ -93,24 +96,102 @@ function initializeTongQuanPage() {
     const initChart = (elementId, options) => {
         const chartDom = document.getElementById(elementId);
         if (chartDom) {
-            echarts.dispose(chartDom);
-            const myChart = echarts.init(chartDom);
-            myChart.setOption(options);
-            // Quan trọng: Phải có listener resize ở đây vì window là đối tượng toàn cục
-            new ResizeObserver(() => myChart.resize()).observe(chartDom.parentElement);
+            // Sử dụng setTimeout để đảm bảo DOM đã render hoàn toàn trước khi vẽ chart
+            setTimeout(() => {
+                echarts.dispose(chartDom);
+                const myChart = echarts.init(chartDom);
+                myChart.setOption(options);
+                // ResizeObserver tốt hơn window.resize vì nó chỉ theo dõi phần tử cha
+                new ResizeObserver(() => myChart.resize()).observe(chartDom.parentElement);
+            }, 0);
+        } else {
+            console.error(`Không tìm thấy phần tử biểu đồ với ID: ${elementId}`);
         }
     };
 
-    // Task Progress Chart
-    const taskProgressChartOptions = { /* ... Copy options từ file HTML cũ ... */ };
+    // 1. Task Progress Chart Options
+    const taskProgressChartOptions = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            right: 10,
+            top: 'center',
+            data: ['Đã hoàn thành', 'Đang thực hiện', 'Chưa bắt đầu']
+        },
+        series: [{
+            name: 'Tiến độ công việc',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: { show: false },
+            emphasis: { label: { show: false } },
+            labelLine: { show: false },
+            data: [
+                { value: 30, name: 'Đã hoàn thành', itemStyle: { color: '#22c55e' } },
+                { value: 45, name: 'Đang thực hiện', itemStyle: { color: '#f59e0b' } },
+                { value: 25, name: 'Chưa bắt đầu', itemStyle: { color: '#d1d5db' } }
+            ]
+        }]
+    };
     initChart('taskProgressChart', taskProgressChartOptions);
 
-    // Budget Chart
-    const budgetChartOptions = { /* ... Copy options từ file HTML cũ ... */ };
+    // 2. Budget Chart Options
+    const budgetChartOptions = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { type: 'shadow' },
+            formatter: (params) => {
+                const value = new Intl.NumberFormat('vi-VN').format(params[0].value * 1000000);
+                return `${params[0].name}<br/>${params[0].marker} ${value} đ`;
+            }
+        },
+        grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+        xAxis: [{
+            type: 'category',
+            data: ['Tổng ngân sách', 'Đã chi', 'Còn lại'],
+            axisTick: { alignWithLabel: true }
+        }],
+        yAxis: [{
+            type: 'value',
+            axisLabel: { formatter: '{value}tr' }
+        }],
+        series: [{
+            name: 'Ngân sách',
+            type: 'bar',
+            barWidth: '60%',
+            data: [
+                { value: 100, itemStyle: { color: '#3b82f6' } },
+                { value: 35, itemStyle: { color: '#ef4444' } },
+                { value: 65, itemStyle: { color: '#22c55e' } }
+            ],
+            itemStyle: { borderRadius: 4 }
+        }]
+    };
     initChart('budgetChart', budgetChartOptions);
 
-    // Guest Chart
-    const guestChartOptions = { /* ... Copy options từ file HTML cũ ... */ };
+    // 3. Guest Chart Options
+    const guestChartOptions = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: { show: false },
+        series: [{
+            name: 'Khách mời',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            label: { show: false },
+            labelLine: { show: false },
+            data: [
+                { value: 120, name: 'Đã xác nhận', itemStyle: { color: '#22c55e' } },
+                { value: 80, name: 'Chờ xác nhận', itemStyle: { color: '#f59e0b' } }
+            ]
+        }]
+    };
     initChart('guestChart', guestChartOptions);
 }
 
