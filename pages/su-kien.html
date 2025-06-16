@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản Lý Sự Kiện Đám Cưới</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2563eb',secondary:'#f472b6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f5f7fa;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+</head>
+<body class="bg-gray-100">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<div class="w-64 bg-white border-r border-gray-200 flex flex-col">
+<div class="p-4 border-b border-gray-200">
+<div class="font-['Pacifico'] text-xl text-primary">logo</div>
+</div>
+<div class="p-4 border-b border-gray-200">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+<i class="ri-user-line text-gray-500 ri-lg"></i>
+</div>
+<div class="ml-3">
+<div class="font-medium">Văn Khuê</div>
+<div class="text-sm text-gray-500">Chú rể</div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<nav class="p-2">
+<a href="https://readdy.ai/home/302544fc-4f4a-40fb-a726-7949d43c0202/3a04eb7f-1c87-46a3-a1a3-e5e791892568" data-readdy="true" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-dashboard-line"></i>
+</div>
+<span class="ml-3">Tổng quan</span>
+</a>
+<a href="https://readdy.ai/home/302544fc-4f4a-40fb-a726-7949d43c0202/0d6d9eeb-e2e2-4d17-a86d-e9dec5625971" data-readdy="true" class="flex items-center p-3 mb-1 rounded-button bg-primary text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-calendar-line"></i>
+</div>
+<span class="ml-3">Sự kiện</span>
+</a>
+<a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-task-line"></i>
+</div>
+<span class="ml-3">Công việc</span>
+</a>
+<a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-store-line"></i>
+</div>
+<span class="ml-3">Nhà cung cấp</span>
+</a>
+<a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-money-dollar-circle-line"></i>
+</div>
+<span class="ml-3">Ngân sách</span>
+</a>
+<a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-exchange-funds-line"></i>
+</div>
+<span class="ml-3">Giao dịch</span>
+</a>
+<a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-add-line"></i>
+</div>
+<span class="ml-3">Khách mời</span>
+</a>
+<a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-file-list-3-line"></i>
+</div>
+<span class="ml-3">Kịch bản</span>
+</a>
+</nav>
+</div>
+<div class="p-4 border-t border-gray-200">
+<button class="flex items-center p-3 w-full rounded-button text-gray-700 hover:bg-gray-100">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-logout-box-line"></i>
+</div>
+<span class="ml-3">Đăng xuất</span>
+</button>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 overflow-auto">
+<!-- Breadcrumb -->
+<div class="bg-white p-4 border-b border-gray-200">
+<div class="text-sm text-gray-500">
+<a href="#" class="hover:text-primary">Trang chủ</a> / <span class="text-gray-700">Sự kiện</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h1 class="text-2xl font-bold text-gray-800">Quản Lý Sự Kiện</h1>
+<button id="addEventBtn" class="px-4 py-2 bg-primary text-white rounded-button flex items-center !rounded-button whitespace-nowrap">
+<i class="ri-add-line mr-2"></i>
+Thêm sự kiện mới
+</button>
+</div>
+<!-- Filter section -->
+<div class="bg-white rounded-lg shadow-sm mb-6 p-4">
+<div class="flex flex-wrap items-center gap-4">
+<div class="flex items-center">
+<label class="mr-2 text-gray-600">Trạng thái:</label>
+<div class="relative">
+<button id="statusFilterBtn" class="px-4 py-2 border border-gray-300 rounded-button flex items-center justify-between min-w-[150px] !rounded-button whitespace-nowrap">
+<span>Tất cả</span>
+<i class="ri-arrow-down-s-line ml-2"></i>
+</button>
+<div id="statusFilterDropdown" class="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+<div class="p-2">
+<div class="px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">Tất cả</div>
+<div class="px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">Đã hoàn thành</div>
+<div class="px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">Đang chuẩn bị</div>
+<div class="px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">Chưa bắt đầu</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<label class="mr-2 text-gray-600">Thời gian:</label>
+<div class="relative">
+<button id="timeFilterBtn" class="px-4 py-2 border border-gray-300 rounded-button flex items-center justify-between min-w-[150px] !rounded-button whitespace-nowrap">
+<span>Tất cả</span>
+<i class="ri-arrow-down-s-line ml-2"></i>
+</button>
+<div id="timeFilterDropdown" class="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+<div class="p-2">
+<div class="px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">Tất cả</div>
+<div class="px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">Sắp diễn ra</div>
+<div class="px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">Đã diễn ra</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 ml-auto">
+<div class="relative">
+<input type="text" placeholder="Tìm kiếm sự kiện..." class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Events List -->
+<div class="bg-white rounded-lg shadow-sm mb-6">
+<div class="p-4 border-b border-gray-100 flex items-center justify-between">
+<div class="font-medium">Danh sách sự kiện</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary border border-gray-200 rounded-button">
+<i class="ri-list-check-2"></i>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary border border-gray-200 rounded-button">
+<i class="ri-calendar-2-line"></i>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tên sự kiện</th>
+<th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thời gian</th>
+<th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Địa điểm</th>
+<th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số khách</th>
+<th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+<th class="py-3 px-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr class="hover:bg-gray-50">
+<td class="py-4 px-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 text-blue-500 rounded-full">
+<i class="ri-heart-line"></i>
+</div>
+<div class="ml-3">
+<div class="font-medium text-gray-900">Lễ dạm ngõ</div>
+<div class="text-sm text-gray-500">Gia đình nhà gái</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">15/08/2025</div>
+<div class="text-sm text-gray-500">09:00 - 11:00</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">Nhà riêng gia đình cô dâu</div>
+<div class="text-sm text-gray-500">Hà Nội</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">30 người</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Đã hoàn thành</span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary hover:text-blue-700 font-medium text-sm mr-2 viewDetailBtn" data-id="1">Xem chi tiết</button>
+<button class="text-gray-500 hover:text-gray-700 text-sm editEventBtn" data-id="1">Sửa</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="py-4 px-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-pink-100 text-pink-500 rounded-full">
+<i class="ri-gift-line"></i>
+</div>
+<div class="ml-3">
+<div class="font-medium text-gray-900">Lễ ăn hỏi</div>
+<div class="text-sm text-gray-500">Gia đình nhà gái</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">28/10/2025</div>
+<div class="text-sm text-gray-500">08:00 - 12:00</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">Nhà riêng gia đình cô dâu</div>
+<div class="text-sm text-gray-500">Hà Nội</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">50 người</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Đang chuẩn bị</span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary hover:text-blue-700 font-medium text-sm mr-2 viewDetailBtn" data-id="2">Xem chi tiết</button>
+<button class="text-gray-500 hover:text-gray-700 text-sm editEventBtn" data-id="2">Sửa</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="py-4 px-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-purple-100 text-purple-500 rounded-full">
+<i class="ri-cake-3-line"></i>
+</div>
+<div class="ml-3">
+<div class="font-medium text-gray-900">Tiệc cưới nhà gái</div>
+<div class="text-sm text-gray-500">Nhà hàng Thành Công</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">29/11/2025</div>
+<div class="text-sm text-gray-500">17:30 - 21:00</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">Nhà hàng Thành Công</div>
+<div class="text-sm text-gray-500">Hà Nội</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">200 người</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">Chưa bắt đầu</span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary hover:text-blue-700 font-medium text-sm mr-2 viewDetailBtn" data-id="3">Xem chi tiết</button>
+<button class="text-gray-500 hover:text-gray-700 text-sm editEventBtn" data-id="3">Sửa</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="py-4 px-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-red-100 text-red-500 rounded-full">
+<i class="ri-cake-2-line"></i>
+</div>
+<div class="ml-3">
+<div class="font-medium text-gray-900">Tiệc cưới nhà trai</div>
+<div class="text-sm text-gray-500">Trung tâm tiệc cưới Luxury</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">21/12/2025</div>
+<div class="text-sm text-gray-500">18:00 - 22:00</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">Trung tâm tiệc cưới Luxury</div>
+<div class="text-sm text-gray-500">Hồ Chí Minh</div>
+</td>
+<td class="py-4 px-4">
+<div class="text-sm text-gray-900">250 người</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">Chưa bắt đầu</span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary hover:text-blue-700 font-medium text-sm mr-2 viewDetailBtn" data-id="4">Xem chi tiết</button>
+<button class="text-gray-500 hover:text-gray-700 text-sm editEventBtn" data-id="4">Sửa</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-gray-100 flex items-center justify-between">
+<div class="text-sm text-gray-500">Hiển thị 1-4 của 4 sự kiện</div>
+<div class="flex items-center">
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary border border-gray-200 rounded-button mr-2 disabled:opacity-50" disabled>
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-white bg-primary border border-primary rounded-button mr-2">
+1
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary border border-gray-200 rounded-button disabled:opacity-50" disabled>
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Event Modal -->
+<div id="addEventModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+<div class="bg-white rounded-lg w-full max-w-2xl max-h-[90vh] overflow-auto">
+<div class="p-4 border-b border-gray-200 flex items-center justify-between">
+<h3 class="text-lg font-medium">Thêm sự kiện mới</h3>
+<button id="closeAddEventModal" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full">
+<i class="ri-close-line"></i>
+</button>
+</div>
+<div class="p-6">
+<form id="addEventForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Tên sự kiện</label>
+<input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Nhập tên sự kiện">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Loại sự kiện</label>
+<div class="relative">
+<select class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8">
+<option>Lễ dạm ngõ</option>
+<option>Lễ ăn hỏi</option>
+<option>Tiệc cưới</option>
+<option>Khác</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Ngày</label>
+<input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Giờ bắt đầu</label>
+<input type="time" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Giờ kết thúc</label>
+<input type="time" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Địa điểm</label>
+<input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Nhập địa điểm tổ chức">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Số lượng khách mời</label>
+<input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Nhập số lượng khách">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Trạng thái</label>
+<div class="relative">
+<select class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8">
+<option>Chưa bắt đầu</option>
+<option>Đang chuẩn bị</option>
+<option>Đã hoàn thành</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Ngân sách dự kiến</label>
+<div class="relative">
+<input type="text" class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Nhập ngân sách">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+<span class="text-gray-500">₫</span>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Ghi chú</label>
+<textarea class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="3" placeholder="Nhập ghi chú"></textarea>
+</div>
+<div class="flex justify-end gap-3">
+<button type="button" id="cancelAddEvent" class="px-4 py-2 border border-gray-300 rounded-button text-gray-700 hover:bg-gray-50 !rounded-button whitespace-nowrap">Hủy bỏ</button>
+<button type="submit" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-blue-700 !rounded-button whitespace-nowrap">Thêm sự kiện</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Event Detail Modal -->
+<div id="eventDetailModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+<div class="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-auto">
+<div class="p-4 border-b border-gray-200 flex items-center justify-between">
+<h3 class="text-lg font-medium">Chi tiết sự kiện: <span id="eventDetailTitle">Tiệc cưới nhà gái</span></h3>
+<div class="flex items-center gap-2">
+<button id="editEventDetailBtn" class="px-3 py-1 border border-gray-300 rounded-button text-gray-700 hover:bg-gray-50 flex items-center !rounded-button whitespace-nowrap">
+<i class="ri-edit-line mr-1"></i> Sửa
+</button>
+<button id="deleteEventBtn" class="px-3 py-1 border border-red-300 rounded-button text-red-700 hover:bg-red-50 flex items-center !rounded-button whitespace-nowrap">
+<i class="ri-delete-bin-line mr-1"></i> Xóa
+</button>
+<button id="closeEventDetailModal" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 rounded-full">
+<i class="ri-close-line"></i>
+</button>
+</div>
+</div>
+<div class="p-4">
+<!-- Tabs -->
+<div class="border-b border-gray-200 mb-4">
+<div class="flex">
+<button class="eventDetailTab px-4 py-2 border-b-2 border-primary text-primary font-medium" data-tab="general">Thông tin chung</button>
+<button class="eventDetailTab px-4 py-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700" data-tab="vendors">Nhà cung cấp</button>
+<button class="eventDetailTab px-4 py-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700" data-tab="finance">Tài chính</button>
+</div>
+</div>
+<!-- Tab content -->
+<div class="eventDetailTabContent" id="generalTab">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2">
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<h4 class="font-medium mb-3 flex items-center"><i class="ri-information-line mr-2 text-primary"></i> Thông tin chi tiết</h4>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<div class="text-sm text-gray-500 mb-1">Loại sự kiện</div>
+<div class="font-medium">Tiệc cưới</div>
+</div>
+<div>
+<div class="text-sm text-gray-500 mb-1">Ngày tổ chức</div>
+<div class="font-medium">29/11/2025</div>
+</div>
+<div>
+<div class="text-sm text-gray-500 mb-1">Thời gian</div>
+<div class="font-medium">17:30 - 21:00</div>
+</div>
+<div>
+<div class="text-sm text-gray-500 mb-1">Địa điểm</div>
+<div class="font-medium">Nhà hàng Thành Công, Hà Nội</div>
+</div>
+<div>
+<div class="text-sm text-gray-500 mb-1">Số lượng khách mời</div>
+<div class="font-medium">200 người</div>
+</div>
+<div>
+<div class="text-sm text-gray-500 mb-1">Trạng thái</div>
+<div><span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">Chưa bắt đầu</span></div>
+</div>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-medium flex items-center"><i class="ri-task-line mr-2 text-primary"></i> Danh sách công việc</h4>
+<button class="text-sm text-primary hover:text-blue-700">+ Thêm công việc</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Công việc</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Người phụ trách</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hạn chót</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-2 px-3 text-sm">Đặt hoa trang trí</td>
+<td class="py-2 px-3 text-sm">Nguyễn Thị Hương</td>
+<td class="py-2 px-3 text-sm">20/11/2025</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Đang thực hiện</span></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Đặt dịch vụ quay phim, chụp ảnh</td>
+<td class="py-2 px-3 text-sm">Trần Văn Minh</td>
+<td class="py-2 px-3 text-sm">15/10/2025</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Hoàn thành</span></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Đặt menu tiệc cưới</td>
+<td class="py-2 px-3 text-sm">Lê Thị Ngọc</td>
+<td class="py-2 px-3 text-sm">01/11/2025</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">Chưa bắt đầu</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg p-4">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-medium flex items-center"><i class="ri-user-add-line mr-2 text-primary"></i> Danh sách khách mời</h4>
+<button class="text-sm text-primary hover:text-blue-700">+ Thêm khách mời</button>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<div class="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">Tổng: 200 khách</div>
+<div class="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Đã xác nhận: 120 khách</div>
+<div class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Chờ xác nhận: 80 khách</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tên khách</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mối quan hệ</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số điện thoại</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-2 px-3 text-sm">Nguyễn Văn An</td>
+<td class="py-2 px-3 text-sm">Bạn cô dâu</td>
+<td class="py-2 px-3 text-sm">0912345678</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Đã xác nhận</span></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Trần Thị Bình</td>
+<td class="py-2 px-3 text-sm">Đồng nghiệp</td>
+<td class="py-2 px-3 text-sm">0987654321</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Chờ xác nhận</span></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Phạm Văn Cường</td>
+<td class="py-2 px-3 text-sm">Bạn chú rể</td>
+<td class="py-2 px-3 text-sm">0909123456</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Đã xác nhận</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<h4 class="font-medium mb-3 flex items-center"><i class="ri-file-text-line mr-2 text-primary"></i> Ghi chú & Yêu cầu đặc biệt</h4>
+<div class="text-sm text-gray-700">
+<p class="mb-2">- Yêu cầu không gian trang trí theo tông màu hồng pastel và trắng.</p>
+<p class="mb-2">- Chuẩn bị khu vực riêng cho gia đình hai bên.</p>
+<p class="mb-2">- Cần bố trí người đón tiếp khách tại cổng.</p>
+<p>- Chuẩn bị sân khấu cho nghi lễ trao nhẫn.</p>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg p-4">
+<h4 class="font-medium mb-3 flex items-center"><i class="ri-attachment-line mr-2 text-primary"></i> Tài liệu đính kèm</h4>
+<div class="space-y-2">
+<div class="flex items-center p-2 border border-gray-200 rounded">
+<div class="w-8 h-8 flex items-center justify-center text-blue-500">
+<i class="ri-file-word-line ri-lg"></i>
+</div>
+<div class="ml-2 flex-1">
+<div class="text-sm font-medium">Kịch bản chi tiết.docx</div>
+<div class="text-xs text-gray-500">1.2 MB</div>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+<i class="ri-download-line"></i>
+</button>
+</div>
+<div class="flex items-center p-2 border border-gray-200 rounded">
+<div class="w-8 h-8 flex items-center justify-center text-green-500">
+<i class="ri-file-excel-line ri-lg"></i>
+</div>
+<div class="ml-2 flex-1">
+<div class="text-sm font-medium">Danh sách khách mời.xlsx</div>
+<div class="text-xs text-gray-500">850 KB</div>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+<i class="ri-download-line"></i>
+</button>
+</div>
+<div class="flex items-center p-2 border border-gray-200 rounded">
+<div class="w-8 h-8 flex items-center justify-center text-red-500">
+<i class="ri-file-pdf-line ri-lg"></i>
+</div>
+<div class="ml-2 flex-1">
+<div class="text-sm font-medium">Hợp đồng nhà hàng.pdf</div>
+<div class="text-xs text-gray-500">2.4 MB</div>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary">
+<i class="ri-download-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="eventDetailTabContent hidden" id="vendorsTab">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-1">
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<h4 class="font-medium mb-4 flex items-center"><i class="ri-store-line mr-2 text-primary"></i> Tổng quan nhà cung cấp</h4>
+<div id="vendorChart" class="w-full h-48 mb-4"></div>
+<div class="grid grid-cols-2 gap-2">
+<div class="flex items-center">
+<div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+<span class="text-sm">Đã chốt (5)</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 bg-yellow-400 rounded-full mr-2"></div>
+<span class="text-sm">Đang cân nhắc (3)</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 bg-gray-300 rounded-full mr-2"></div>
+<span class="text-sm">Cần tìm (4)</span>
+</div>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg p-4">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-medium flex items-center"><i class="ri-add-line mr-2 text-primary"></i> Thêm nhà cung cấp</h4>
+</div>
+<form>
+<div class="mb-3">
+<label class="block text-sm font-medium text-gray-700 mb-1">Loại dịch vụ</label>
+<div class="relative">
+<select class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8">
+<option>Trang trí</option>
+<option>Ẩm thực</option>
+<option>Âm thanh, ánh sáng</option>
+<option>Quay phim, chụp ảnh</option>
+<option>Khác</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div class="mb-3">
+<label class="block text-sm font-medium text-gray-700 mb-1">Tên nhà cung cấp</label>
+<input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Nhập tên nhà cung cấp">
+</div>
+<div class="mb-3">
+<label class="block text-sm font-medium text-gray-700 mb-1">Trạng thái</label>
+<div class="relative">
+<select class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8">
+<option>Đã chốt</option>
+<option>Đang cân nhắc</option>
+<option>Cần tìm</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div class="mb-3">
+<label class="block text-sm font-medium text-gray-700 mb-1">Giá dự kiến</label>
+<div class="relative">
+<input type="text" class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Nhập giá dự kiến">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+<span class="text-gray-500">₫</span>
+</div>
+</div>
+</div>
+<button type="submit" class="w-full px-4 py-2 bg-primary text-white rounded-button hover:bg-blue-700 !rounded-button whitespace-nowrap">Thêm nhà cung cấp</button>
+</form>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-medium">Đã chốt (5)</h4>
+<div class="text-sm text-primary">Tổng: 35.000.000 đ</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nhà cung cấp</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dịch vụ</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Liên hệ</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giá trị HĐ</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Đã thanh toán</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-2 px-3 text-sm">Công ty Ánh Dương</td>
+<td class="py-2 px-3 text-sm">Trang trí</td>
+<td class="py-2 px-3 text-sm">0912345678</td>
+<td class="py-2 px-3 text-sm">12.000.000 đ</td>
+<td class="py-2 px-3 text-sm">6.000.000 đ</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Studio Minh Tuấn</td>
+<td class="py-2 px-3 text-sm">Quay phim, chụp ảnh</td>
+<td class="py-2 px-3 text-sm">0987654321</td>
+<td class="py-2 px-3 text-sm">8.000.000 đ</td>
+<td class="py-2 px-3 text-sm">4.000.000 đ</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Ban nhạc Sắc Màu</td>
+<td class="py-2 px-3 text-sm">Âm nhạc</td>
+<td class="py-2 px-3 text-sm">0909123456</td>
+<td class="py-2 px-3 text-sm">5.000.000 đ</td>
+<td class="py-2 px-3 text-sm">0 đ</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Hoa Tươi Hạnh Phúc</td>
+<td class="py-2 px-3 text-sm">Hoa cưới</td>
+<td class="py-2 px-3 text-sm">0978123456</td>
+<td class="py-2 px-3 text-sm">3.000.000 đ</td>
+<td class="py-2 px-3 text-sm">1.500.000 đ</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Áo Cưới Thanh Hằng</td>
+<td class="py-2 px-3 text-sm">Trang phục</td>
+<td class="py-2 px-3 text-sm">0912987654</td>
+<td class="py-2 px-3 text-sm">7.000.000 đ</td>
+<td class="py-2 px-3 text-sm">3.500.000 đ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-medium">Đang cân nhắc (3)</h4>
+<div class="text-sm text-primary">Tổng dự kiến: 18.000.000 đ</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nhà cung cấp</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dịch vụ</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Liên hệ</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giá dự kiến</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ghi chú</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-2 px-3 text-sm">Xe Hoa Tân Tiến</td>
+<td class="py-2 px-3 text-sm">Xe hoa</td>
+<td class="py-2 px-3 text-sm">0912345678</td>
+<td class="py-2 px-3 text-sm">5.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Đang đợi báo giá chi tiết</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">MC Hoàng Anh</td>
+<td class="py-2 px-3 text-sm">Dẫn chương trình</td>
+<td class="py-2 px-3 text-sm">0987654321</td>
+<td class="py-2 px-3 text-sm">8.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Cần xác nhận lịch</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Bánh Cưới Ngọt Ngào</td>
+<td class="py-2 px-3 text-sm">Bánh cưới</td>
+<td class="py-2 px-3 text-sm">0909123456</td>
+<td class="py-2 px-3 text-sm">5.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Đang chọn mẫu</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg p-4">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-medium">Cần tìm (4)</h4>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dịch vụ</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngân sách dự kiến</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ghi chú</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-2 px-3 text-sm">Vũ đoàn</td>
+<td class="py-2 px-3 text-sm">6.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Cần 4-6 vũ công</td>
+<td class="py-2 px-3 text-sm"><button class="text-primary hover:text-blue-700 text-sm">Tìm kiếm</button></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Quà cảm ơn</td>
+<td class="py-2 px-3 text-sm">10.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Quà cho khách mời</td>
+<td class="py-2 px-3 text-sm"><button class="text-primary hover:text-blue-700 text-sm">Tìm kiếm</button></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Thiệp cưới</td>
+<td class="py-2 px-3 text-sm">5.000.000 đ</td>
+<td class="py-2 px-3 text-sm">200 thiệp</td>
+<td class="py-2 px-3 text-sm"><button class="text-primary hover:text-blue-700 text-sm">Tìm kiếm</button></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">Trang điểm</td>
+<td class="py-2 px-3 text-sm">4.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Cho cô dâu và phù dâu</td>
+<td class="py-2 px-3 text-sm"><button class="text-primary hover:text-blue-700 text-sm">Tìm kiếm</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="eventDetailTabContent hidden" id="financeTab">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-1">
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<h4 class="font-medium mb-4 flex items-center"><i class="ri-money-dollar-circle-line mr-2 text-primary"></i> Tổng quan tài chính</h4>
+<div class="space-y-3">
+<div class="p-3 bg-blue-50 rounded-lg">
+<div class="text-sm text-gray-600">Tổng ngân sách (A)</div>
+<div class="font-medium text-lg">100.000.000 đ</div>
+</div>
+<div class="p-3 bg-green-50 rounded-lg">
+<div class="text-sm text-gray-600">Tổng giá trị HĐ đã chốt (B)</div>
+<div class="font-medium text-lg">35.000.000 đ</div>
+</div>
+<div class="p-3 bg-yellow-50 rounded-lg">
+<div class="text-sm text-gray-600">Đã chi (C)</div>
+<div class="font-medium text-lg">15.000.000 đ</div>
+</div>
+<div class="p-3 bg-red-50 rounded-lg">
+<div class="text-sm text-gray-600">Cần thanh toán (B-C)</div>
+<div class="font-medium text-lg">20.000.000 đ</div>
+</div>
+<div class="p-3 bg-purple-50 rounded-lg">
+<div class="text-sm text-gray-600">Còn lại (A-B)</div>
+<div class="font-medium text-lg text-blue-600">65.000.000 đ</div>
+</div>
+</div>
+</div>
+<div class="bg-white border border-gray-200 rounded-lg p-4">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-medium flex items-center"><i class="ri-pie-chart-line mr-2 text-primary"></i> Phân bổ chi phí</h4>
+</div>
+<div id="budgetChart" class="w-full h-64"></div>
+<div class="grid grid-cols-2 gap-2 mt-4">
+<div class="flex items-center">
+<div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+<span class="text-xs">Trang trí (12%)</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+<span class="text-xs">Ẩm thực (45%)</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+<span class="text-xs">Trang phục (7%)</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+<span class="text-xs">Hình ảnh (8%)</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+<span class="text-xs">Giải trí (5%)</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 bg-gray-500 rounded-full mr-2"></div>
+<span class="text-xs">Khác (23%)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h4 class="font-medium flex items-center"><i class="ri-exchange-funds-line mr-2 text-primary"></i> Lịch sử giao dịch</h4>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 border border-primary rounded-button text-primary hover:bg-blue-50 flex items-center !rounded-button whitespace-nowrap">
+<i class="ri-add-line mr-1"></i> Thêm giao dịch
+</button>
+<button class="px-3 py-1 border border-gray-300 rounded-button text-gray-700 hover:bg-gray-50 flex items-center !rounded-button whitespace-nowrap">
+<i class="ri-download-line mr-1"></i> Xuất báo cáo
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mã GD</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nội dung</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số tiền</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nhà cung cấp</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PT thanh toán</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+<th class="py-2 px-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Đính kèm</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-2 px-3 text-sm">15/05/2025</td>
+<td class="py-2 px-3 text-sm">GD001</td>
+<td class="py-2 px-3 text-sm">Đặt cọc trang trí</td>
+<td class="py-2 px-3 text-sm">6.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Công ty Ánh Dương</td>
+<td class="py-2 px-3 text-sm">Chuyển khoản</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Hoàn thành</span></td>
+<td class="py-2 px-3 text-sm"><i class="ri-attachment-line text-primary"></i></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">20/05/2025</td>
+<td class="py-2 px-3 text-sm">GD002</td>
+<td class="py-2 px-3 text-sm">Đặt cọc quay phim</td>
+<td class="py-2 px-3 text-sm">4.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Studio Minh Tuấn</td>
+<td class="py-2 px-3 text-sm">Tiền mặt</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Hoàn thành</span></td>
+<td class="py-2 px-3 text-sm"><i class="ri-attachment-line text-primary"></i></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">01/06/2025</td>
+<td class="py-2 px-3 text-sm">GD003</td>
+<td class="py-2 px-3 text-sm">Đặt cọc hoa cưới</td>
+<td class="py-2 px-3 text-sm">1.500.000 đ</td>
+<td class="py-2 px-3 text-sm">Hoa Tươi Hạnh Phúc</td>
+<td class="py-2 px-3 text-sm">Chuyển khoản</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Hoàn thành</span></td>
+<td class="py-2 px-3 text-sm"><i class="ri-attachment-line text-primary"></i></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">15/06/2025</td>
+<td class="py-2 px-3 text-sm">GD004</td>
+<td class="py-2 px-3 text-sm">Đặt cọc trang phục</td>
+<td class="py-2 px-3 text-sm">3.500.000 đ</td>
+<td class="py-2 px-3 text-sm">Áo Cưới Thanh Hằng</td>
+<td class="py-2 px-3 text-sm">Tiền mặt</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Hoàn thành</span></td>
+<td class="py-2 px-3 text-sm"><i class="ri-attachment-line text-primary"></i></td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">10/11/2025</td>
+<td class="py-2 px-3 text-sm">GD005</td>
+<td class="py-2 px-3 text-sm">Thanh toán còn lại trang trí</td>
+<td class="py-2 px-3 text-sm">6.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Công ty Ánh Dương</td>
+<td class="py-2 px-3 text-sm">Chuyển khoản</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Đang chờ</span></td>
+<td class="py-2 px-3 text-sm">-</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">15/11/2025</td>
+<td class="py-2 px-3 text-sm">GD006</td>
+<td class="py-2 px-3 text-sm">Thanh toán ban nhạc</td>
+<td class="py-2 px-3 text-sm">5.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Ban nhạc Sắc Màu</td>
+<td class="py-2 px-3 text-sm">Chuyển khoản</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Đang chờ</span></td>
+<td class="py-2 px-3 text-sm">-</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">20/11/2025</td>
+<td class="py-2 px-3 text-sm">GD007</td>
+<td class="py-2 px-3 text-sm">Thanh toán còn lại quay phim</td>
+<td class="py-2 px-3 text-sm">4.000.000 đ</td>
+<td class="py-2 px-3 text-sm">Studio Minh Tuấn</td>
+<td class="py-2 px-3 text-sm">Chuyển khoản</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Đang chờ</span></td>
+<td class="py-2 px-3 text-sm">-</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">25/11/2025</td>
+<td class="py-2 px-3 text-sm">GD008</td>
+<td class="py-2 px-3 text-sm">Thanh toán còn lại hoa cưới</td>
+<td class="py-2 px-3 text-sm">1.500.000 đ</td>
+<td class="py-2 px-3 text-sm">Hoa Tươi Hạnh Phúc</td>
+<td class="py-2 px-3 text-sm">Tiền mặt</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Đang chờ</span></td>
+<td class="py-2 px-3 text-sm">-</td>
+</tr>
+<tr>
+<td class="py-2 px-3 text-sm">28/11/2025</td>
+<td class="py-2 px-3 text-sm">GD009</td>
+<td class="py-2 px-3 text-sm">Thanh toán còn lại trang phục</td>
+<td class="py-2 px-3 text-sm">3.500.000 đ</td>
+<td class="py-2 px-3 text-sm">Áo Cưới Thanh Hằng</td>
+<td class="py-2 px-3 text-sm">Tiền mặt</td>
+<td class="py-2 px-3"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Đang chờ</span></td>
+<td class="py-2 px-3 text-sm">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<div class="text-sm text-gray-500">Hiển thị 1-9 của 9 giao dịch</div>
+<div class="flex items-center">
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary border border-gray-200 rounded-button mr-2 disabled:opacity-50" disabled>
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-white bg-primary border border-primary rounded-button mr-2">
+1
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary border border-gray-200 rounded-button disabled:opacity-50" disabled>
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Delete Confirmation Modal -->
+<div id="deleteConfirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+<div class="bg-white rounded-lg w-full max-w-md">
+<div class="p-6">
+<div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-red-100">
+<i class="ri-error-warning-line text-red-500 ri-xl"></i>
+</div>
+<h3 class="text-lg font-medium text-center mb-4">Xác nhận xóa sự kiện</h3>
+<p class="text-center text-gray-500 mb-6">Bạn có chắc chắn muốn xóa sự kiện này? Hành động này không thể hoàn tác.</p>
+<div class="flex justify-center gap-3">
+<button id="cancelDeleteBtn" class="px-4 py-2 border border-gray-300 rounded-button text-gray-700 hover:bg-gray-50 !rounded-button whitespace-nowrap">Hủy bỏ</button>
+<button id="confirmDeleteBtn" class="px-4 py-2 bg-red-600 text-white rounded-button hover:bg-red-700 !rounded-button whitespace-nowrap">Xác nhận xóa</button>
+</div>
+</div>
+</div>
+</div>
+<script id="dropdownScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Status filter dropdown
+const statusFilterBtn = document.getElementById('statusFilterBtn');
+const statusFilterDropdown = document.getElementById('statusFilterDropdown');
+statusFilterBtn.addEventListener('click', function() {
+statusFilterDropdown.classList.toggle('hidden');
+});
+// Time filter dropdown
+const timeFilterBtn = document.getElementById('timeFilterBtn');
+const timeFilterDropdown = document.getElementById('timeFilterDropdown');
+timeFilterBtn.addEventListener('click', function() {
+timeFilterDropdown.classList.toggle('hidden');
+});
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+if (!statusFilterBtn.contains(event.target) && !statusFilterDropdown.contains(event.target)) {
+statusFilterDropdown.classList.add('hidden');
+}
+if (!timeFilterBtn.contains(event.target) && !timeFilterDropdown.contains(event.target)) {
+timeFilterDropdown.classList.add('hidden');
+}
+});
+// Select dropdown items
+const statusItems = statusFilterDropdown.querySelectorAll('.cursor-pointer');
+const timeItems = timeFilterDropdown.querySelectorAll('.cursor-pointer');
+statusItems.forEach(item => {
+item.addEventListener('click', function() {
+statusFilterBtn.querySelector('span').textContent = this.textContent;
+statusFilterDropdown.classList.add('hidden');
+});
+});
+timeItems.forEach(item => {
+item.addEventListener('click', function() {
+timeFilterBtn.querySelector('span').textContent = this.textContent;
+timeFilterDropdown.classList.add('hidden');
+});
+});
+});
+</script>
+<script id="modalScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Add Event Modal
+const addEventBtn = document.getElementById('addEventBtn');
+const addEventModal = document.getElementById('addEventModal');
+const closeAddEventModal = document.getElementById('closeAddEventModal');
+const cancelAddEvent = document.getElementById('cancelAddEvent');
+addEventBtn.addEventListener('click', function() {
+addEventModal.classList.remove('hidden');
+});
+closeAddEventModal.addEventListener('click', function() {
+addEventModal.classList.add('hidden');
+});
+cancelAddEvent.addEventListener('click', function() {
+addEventModal.classList.add('hidden');
+});
+// Event Detail Modal
+const viewDetailBtns = document.querySelectorAll('.viewDetailBtn');
+const eventDetailModal = document.getElementById('eventDetailModal');
+const closeEventDetailModal = document.getElementById('closeEventDetailModal');
+const eventDetailTitle = document.getElementById('eventDetailTitle');
+viewDetailBtns.forEach(btn => {
+btn.addEventListener('click', function() {
+const eventId = this.getAttribute('data-id');
+// You would normally fetch event details based on ID
+// For demo, we'll just show different titles
+if (eventId === '1') {
+eventDetailTitle.textContent = 'Lễ dạm ngõ';
+} else if (eventId === '2') {
+eventDetailTitle.textContent = 'Lễ ăn hỏi';
+} else if (eventId === '3') {
+eventDetailTitle.textContent = 'Tiệc cưới nhà gái';
+} else if (eventId === '4') {
+eventDetailTitle.textContent = 'Tiệc cưới nhà trai';
+}
+eventDetailModal.classList.remove('hidden');
+});
+});
+closeEventDetailModal.addEventListener('click', function() {
+eventDetailModal.classList.add('hidden');
+});
+// Delete Confirmation Modal
+const deleteEventBtn = document.getElementById('deleteEventBtn');
+const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+deleteEventBtn.addEventListener('click', function() {
+deleteConfirmModal.classList.remove('hidden');
+});
+cancelDeleteBtn.addEventListener('click', function() {
+deleteConfirmModal.classList.add('hidden');
+});
+confirmDeleteBtn.addEventListener('click', function() {
+// Here you would handle the actual deletion
+deleteConfirmModal.classList.add('hidden');
+eventDetailModal.classList.add('hidden');
+// Show a success notification or refresh the list
+});
+// Close modals when clicking outside
+window.addEventListener('click', function(event) {
+if (event.target === addEventModal) {
+addEventModal.classList.add('hidden');
+}
+if (event.target === eventDetailModal) {
+eventDetailModal.classList.add('hidden');
+}
+if (event.target === deleteConfirmModal) {
+deleteConfirmModal.classList.add('hidden');
+}
+});
+});
+</script>
+<script id="tabScript">
+document.addEventListener('DOMContentLoaded', function() {
+const tabs = document.querySelectorAll('.eventDetailTab');
+const tabContents = document.querySelectorAll('.eventDetailTabContent');
+tabs.forEach(tab => {
+tab.addEventListener('click', function() {
+const tabId = this.getAttribute('data-tab');
+// Remove active class from all tabs
+tabs.forEach(t => {
+t.classList.remove('border-primary', 'text-primary');
+t.classList.add('border-transparent', 'text-gray-500');
+});
+// Add active class to current tab
+this.classList.remove('border-transparent', 'text-gray-500');
+this.classList.add('border-primary', 'text-primary');
+// Hide all tab contents
+tabContents.forEach(content => {
+content.classList.add('hidden');
+});
+// Show current tab content
+document.getElementById(tabId + 'Tab').classList.remove('hidden');
+});
+});
+});
+</script>
+<script id="chartScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Vendor Chart
+const vendorChart = echarts.init(document.getElementById('vendorChart'));
+const vendorOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+formatter: '{a} <br/>{b}: {c} ({d}%)',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#f0f0f0',
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+show: false
+},
+series: [
+{
+name: 'Nhà cung cấp',
+type: 'pie',
+radius: ['40%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 8,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false
+},
+emphasis: {
+label: {
+show: false
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 5, name: 'Đã chốt', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+{ value: 3, name: 'Đang cân nhắc', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+{ value: 4, name: 'Cần tìm', itemStyle: { color: 'rgba(141, 211, 199, 1)' } }
+]
+}
+]
+};
+vendorChart.setOption(vendorOption);
+// Budget Chart
+const budgetChart = echarts.init(document.getElementById('budgetChart'));
+const budgetOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+formatter: '{a} <br/>{b}: {c}%',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#f0f0f0',
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+show: false
+},
+series: [
+{
+name: 'Phân bổ chi phí',
+type: 'pie',
+radius: '70%',
+center: ['50%', '50%'],
+data: [
+{ value: 12, name: 'Trang trí', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+{ value: 45, name: 'Ẩm thực', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+{ value: 7, name: 'Trang phục', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+{ value: 8, name: 'Hình ảnh', itemStyle: { color: 'rgba(252, 141, 98, 1)' } },
+{ value: 5, name: 'Giải trí', itemStyle: { color: '#a855f7' } },
+{ value: 23, name: 'Khác', itemStyle: { color: '#6b7280' } }
+],
+emphasis: {
+itemStyle: {
+shadowBlur: 10,
+shadowOffsetX: 0,
+shadowColor: 'rgba(0, 0, 0, 0.5)'
+}
+},
+labelLine: {
+show: false
+},
+label: {
+show: false
+}
+}
+]
+};
+budgetChart.setOption(budgetOption);
+// Resize charts when window size changes
+window.addEventListener('resize', function() {
+if (vendorChart) vendorChart.resize();
+if (budgetChart) budgetChart.resize();
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tổng Quan Đám Cưới</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2563eb',secondary:'#f472b6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f7fa;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>
+</head>
+<body class="bg-gray-100">
+<div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="p-4 border-b border-gray-200">
+      <div class="font-['Pacifico'] text-xl text-primary">logo</div>
+    </div>
+    <div class="p-4 border-b border-gray-200">
+      <div class="flex items-center">
+        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+          <i class="ri-user-line text-gray-500 ri-lg"></i>
+        </div>
+        <div class="ml-3">
+          <div class="font-medium">Văn Khuê</div>
+          <div class="text-sm text-gray-500">Chú rể</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 overflow-y-auto">
+      <nav class="p-2">
+        <a href="#" class="flex items-center p-3 mb-1 rounded-button bg-primary text-white">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-dashboard-line"></i>
+          </div>
+          <span class="ml-3">Tổng quan</span>
+        </a>
+        <a href="https://readdy.ai/home/302544fc-4f4a-40fb-a726-7949d43c0202/98ba2480-0e5e-415b-a379-d1da5be48fde" data-readdy="true" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-calendar-line"></i>
+          </div>
+          <span class="ml-3">Sự kiện</span>
+        </a>
+        <a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-task-line"></i>
+          </div>
+          <span class="ml-3">Công việc</span>
+        </a>
+        <a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-store-line"></i>
+          </div>
+          <span class="ml-3">Nhà cung cấp</span>
+        </a>
+        <a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-money-dollar-circle-line"></i>
+          </div>
+          <span class="ml-3">Ngân sách</span>
+        </a>
+        <a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-exchange-funds-line"></i>
+          </div>
+          <span class="ml-3">Giao dịch</span>
+        </a>
+        <a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-user-add-line"></i>
+          </div>
+          <span class="ml-3">Khách mời</span>
+        </a>
+        <a href="#" class="flex items-center p-3 mb-1 rounded-button text-gray-700 hover:bg-gray-100">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-file-list-3-line"></i>
+          </div>
+          <span class="ml-3">Kịch bản</span>
+        </a>
+      </nav>
+    </div>
+    <div class="p-4 border-t border-gray-200">
+      <button class="flex items-center p-3 w-full rounded-button text-gray-700 hover:bg-gray-100">
+        <div class="w-6 h-6 flex items-center justify-center">
+          <i class="ri-logout-box-line"></i>
+        </div>
+        <span class="ml-3">Đăng xuất</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 overflow-auto">
+    <!-- Breadcrumb -->
+    <div class="bg-white p-4 border-b border-gray-200">
+      <div class="text-sm text-gray-500">
+        <a href="#" class="hover:text-primary">Trang chủ</a> / <span class="text-gray-700">Tổng quan</span>
+      </div>
+    </div>
+
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Tổng Quan Đám Cưới</h1>
+        <a href="https://readdy.ai/home/302544fc-4f4a-40fb-a726-7949d43c0202/98ba2480-0e5e-415b-a379-d1da5be48fde" data-readdy="true" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-button flex items-center !rounded-button whitespace-nowrap hover:bg-gray-50">
+          <i class="ri-arrow-left-line mr-2"></i>
+          Trở về trang Sự kiện
+        </a>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-primary">
+              <i class="ri-calendar-event-line ri-lg"></i>
+            </div>
+            <div class="ml-4">
+              <div class="text-sm text-gray-500">Tổng số sự kiện</div>
+              <div class="text-2xl font-bold">4</div>
+            </div>
+          </div>
+          <div class="mt-4 text-sm text-gray-500">
+            <span class="text-green-500 font-medium">100%</span> đã lên kế hoạch
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+              <i class="ri-money-dollar-circle-line ri-lg"></i>
+            </div>
+            <div class="ml-4">
+              <div class="text-sm text-gray-500">Ngân sách còn lại</div>
+              <div class="text-2xl font-bold">65.000.000đ</div>
+            </div>
+          </div>
+          <div class="mt-4 text-sm text-gray-500">
+            <span class="text-green-500 font-medium">65%</span> tổng ngân sách
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+              <i class="ri-user-add-line ri-lg"></i>
+            </div>
+            <div class="ml-4">
+              <div class="text-sm text-gray-500">Số khách mời</div>
+              <div class="text-2xl font-bold">200</div>
+            </div>
+          </div>
+          <div class="mt-4 text-sm text-gray-500">
+            <span class="text-green-500 font-medium">120</span> đã xác nhận
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+              <i class="ri-timer-line ri-lg"></i>
+            </div>
+            <div class="ml-4">
+              <div class="text-sm text-gray-500">Thời gian còn lại</div>
+              <div class="text-2xl font-bold">180 ngày</div>
+            </div>
+          </div>
+          <div class="mt-4 text-sm text-gray-500">
+            <span class="text-red-500 font-medium">Đang đếm ngược</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Left Column -->
+        <div class="lg:col-span-2">
+          <!-- Timeline Section -->
+          <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="p-4 border-b border-gray-100">
+              <h2 class="font-medium text-lg flex items-center">
+                <i class="ri-calendar-line mr-2 text-primary"></i> Lịch trình sự kiện
+              </h2>
+            </div>
+            <div class="p-6">
+              <div class="relative">
+                <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                
+                <div class="relative pl-10 pb-8">
+                  <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-green-100 border-4 border-white flex items-center justify-center text-green-600">
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="text-base font-medium">Lễ dạm ngõ</div>
+                    <div class="ml-4 px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Đã hoàn thành</div>
+                  </div>
+                  <div class="text-sm text-gray-500 mt-1">15/08/2025 · 09:00 - 11:00</div>
+                  <div class="text-sm mt-2">Nhà riêng gia đình cô dâu, Hà Nội</div>
+                </div>
+                
+                <div class="relative pl-10 pb-8">
+                  <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-yellow-100 border-4 border-white flex items-center justify-center text-yellow-600">
+                    <i class="ri-time-line"></i>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="text-base font-medium">Lễ ăn hỏi</div>
+                    <div class="ml-4 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Đang chuẩn bị</div>
+                  </div>
+                  <div class="text-sm text-gray-500 mt-1">28/10/2025 · 08:00 - 12:00</div>
+                  <div class="text-sm mt-2">Nhà riêng gia đình cô dâu, Hà Nội</div>
+                </div>
+                
+                <div class="relative pl-10 pb-8">
+                  <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-100 border-4 border-white flex items-center justify-center text-blue-600">
+                    <i class="ri-calendar-2-line"></i>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="text-base font-medium">Tiệc cưới nhà gái</div>
+                    <div class="ml-4 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Chưa bắt đầu</div>
+                  </div>
+                  <div class="text-sm text-gray-500 mt-1">29/11/2025 · 17:30 - 21:00</div>
+                  <div class="text-sm mt-2">Nhà hàng Thành Công, Hà Nội</div>
+                </div>
+                
+                <div class="relative pl-10">
+                  <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-100 border-4 border-white flex items-center justify-center text-blue-600">
+                    <i class="ri-calendar-2-line"></i>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="text-base font-medium">Tiệc cưới nhà trai</div>
+                    <div class="ml-4 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Chưa bắt đầu</div>
+                  </div>
+                  <div class="text-sm text-gray-500 mt-1">21/12/2025 · 18:00 - 22:00</div>
+                  <div class="text-sm mt-2">Trung tâm tiệc cưới Luxury, Hồ Chí Minh</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tasks Progress -->
+          <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center">
+              <h2 class="font-medium text-lg flex items-center">
+                <i class="ri-task-line mr-2 text-primary"></i> Tiến độ công việc
+              </h2>
+              <a href="#" class="text-primary text-sm hover:underline">Xem tất cả</a>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <div id="taskProgressChart" class="w-full h-64"></div>
+                </div>
+                <div>
+                  <h3 class="font-medium mb-4">Công việc ưu tiên</h3>
+                  <div class="space-y-3">
+                    <div class="flex items-center p-3 bg-yellow-50 rounded-lg">
+                      <div class="w-6 h-6 flex items-center justify-center text-yellow-600">
+                        <i class="ri-alarm-warning-line"></i>
+                      </div>
+                      <div class="ml-3 flex-1">
+                        <div class="text-sm font-medium">Đặt hoa trang trí</div>
+                        <div class="text-xs text-gray-500">Hạn chót: 20/11/2025</div>
+                      </div>
+                      <div class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Đang thực hiện</div>
+                    </div>
+                    
+                    <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                      <div class="w-6 h-6 flex items-center justify-center text-blue-600">
+                        <i class="ri-calendar-todo-line"></i>
+                      </div>
+                      <div class="ml-3 flex-1">
+                        <div class="text-sm font-medium">Đặt menu tiệc cưới</div>
+                        <div class="text-xs text-gray-500">Hạn chót: 01/11/2025</div>
+                      </div>
+                      <div class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Chưa bắt đầu</div>
+                    </div>
+                    
+                    <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                      <div class="w-6 h-6 flex items-center justify-center text-blue-600">
+                        <i class="ri-calendar-todo-line"></i>
+                      </div>
+                      <div class="ml-3 flex-1">
+                        <div class="text-sm font-medium">Đặt xe hoa</div>
+                        <div class="text-xs text-gray-500">Hạn chót: 15/10/2025</div>
+                      </div>
+                      <div class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Chưa bắt đầu</div>
+                    </div>
+                    
+                    <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                      <div class="w-6 h-6 flex items-center justify-center text-blue-600">
+                        <i class="ri-calendar-todo-line"></i>
+                      </div>
+                      <div class="ml-3 flex-1">
+                        <div class="text-sm font-medium">Thiết kế thiệp cưới</div>
+                        <div class="text-xs text-gray-500">Hạn chót: 30/09/2025</div>
+                      </div>
+                      <div class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Chưa bắt đầu</div>
+                    </div>
+                    
+                    <div class="flex items-center p-3 bg-green-50 rounded-lg">
+                      <div class="w-6 h-6 flex items-center justify-center text-green-600">
+                        <i class="ri-check-line"></i>
+                      </div>
+                      <div class="ml-3 flex-1">
+                        <div class="text-sm font-medium">Đặt dịch vụ quay phim, chụp ảnh</div>
+                        <div class="text-xs text-gray-500">Hoàn thành: 15/06/2025</div>
+                      </div>
+                      <div class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Hoàn thành</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Budget Overview -->
+          <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center">
+              <h2 class="font-medium text-lg flex items-center">
+                <i class="ri-money-dollar-circle-line mr-2 text-primary"></i> Tổng quan tài chính
+              </h2>
+              <a href="#" class="text-primary text-sm hover:underline">Xem chi tiết</a>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <div id="budgetChart" class="w-full h-64"></div>
+                </div>
+                <div>
+                  <div class="space-y-4">
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="text-sm font-medium">Trang trí</div>
+                        <div class="text-sm font-medium">12.000.000đ</div>
+                      </div>
+                      <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 50%"></div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="text-sm font-medium">Ẩm thực</div>
+                        <div class="text-sm font-medium">45.000.000đ</div>
+                      </div>
+                      <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 30%"></div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="text-sm font-medium">Trang phục</div>
+                        <div class="text-sm font-medium">7.000.000đ</div>
+                      </div>
+                      <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 70%"></div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="text-sm font-medium">Quay phim, chụp ảnh</div>
+                        <div class="text-sm font-medium">8.000.000đ</div>
+                      </div>
+                      <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-purple-500 h-2 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="text-sm font-medium">Giải trí</div>
+                        <div class="text-sm font-medium">5.000.000đ</div>
+                      </div>
+                      <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 0%"></div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="text-sm font-medium">Khác</div>
+                        <div class="text-sm font-medium">23.000.000đ</div>
+                      </div>
+                      <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-gray-500 h-2 rounded-full" style="width: 10%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Column -->
+        <div>
+          <!-- Countdown Widget -->
+          <div class="bg-white rounded-lg shadow-sm mb-6 overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-blue-400 p-6 text-white">
+              <h2 class="font-medium text-lg mb-2">Đếm ngược đến ngày cưới</h2>
+              <div class="text-3xl font-bold">180 ngày</div>
+              <div class="text-sm opacity-80 mt-1">21/12/2025</div>
+            </div>
+            <div class="p-4">
+              <div class="grid grid-cols-4 gap-2 text-center">
+                <div>
+                  <div class="text-2xl font-bold text-primary">5</div>
+                  <div class="text-xs text-gray-500">Tháng</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-primary">29</div>
+                  <div class="text-xs text-gray-500">Ngày</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-primary">12</div>
+                  <div class="text-xs text-gray-500">Giờ</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-primary">45</div>
+                  <div class="text-xs text-gray-500">Phút</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Guest Stats -->
+          <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center">
+              <h2 class="font-medium text-lg flex items-center">
+                <i class="ri-user-add-line mr-2 text-primary"></i> Thống kê khách mời
+              </h2>
+              <a href="#" class="text-primary text-sm hover:underline">Xem tất cả</a>
+            </div>
+            <div class="p-6">
+              <div id="guestChart" class="w-full h-48 mb-4"></div>
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="text-lg font-bold text-green-600">120</div>
+                  <div class="text-xs text-gray-500">Đã xác nhận</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold text-yellow-600">80</div>
+                  <div class="text-xs text-gray-500">Chờ xác nhận</div>
+                </div>
+                <div>
+                  <div class="text-lg font-bold">200</div>
+                  <div class="text-xs text-gray-500">Tổng số</div>
+                </div>
+              </div>
+              
+              <div class="mt-6">
+                <h3 class="font-medium text-sm mb-3">Khách VIP cần chú ý</h3>
+                <div class="space-y-2">
+                  <div class="flex items-center p-2 bg-gray-50 rounded">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                      <i class="ri-user-line text-gray-500"></i>
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <div class="text-sm font-medium">Nguyễn Thanh Tùng</div>
+                      <div class="text-xs text-gray-500">Bác ruột cô dâu</div>
+                    </div>
+                    <div class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Đã xác nhận</div>
+                  </div>
+                  
+                  <div class="flex items-center p-2 bg-gray-50 rounded">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                      <i class="ri-user-line text-gray-500"></i>
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <div class="text-sm font-medium">Trần Minh Đức</div>
+                      <div class="text-xs text-gray-500">Giám đốc công ty</div>
+                    </div>
+                    <div class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Đã xác nhận</div>
+                  </div>
+                  
+                  <div class="flex items-center p-2 bg-gray-50 rounded">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                      <i class="ri-user-line text-gray-500"></i>
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <div class="text-sm font-medium">Phạm Thị Hương</div>
+                      <div class="text-xs text-gray-500">Cô ruột chú rể</div>
+                    </div>
+                    <div class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Chờ xác nhận</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Important Notifications -->
+          <div class="bg-white rounded-lg shadow-sm">
+            <div class="p-4 border-b border-gray-100">
+              <h2 class="font-medium text-lg flex items-center">
+                <i class="ri-notification-3-line mr-2 text-primary"></i> Thông báo quan trọng
+              </h2>
+            </div>
+            <div class="p-4">
+              <div class="space-y-3">
+                <div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+                  <div class="text-sm font-medium text-red-800">Thanh toán đặt cọc nhà hàng</div>
+                  <div class="text-xs text-gray-700 mt-1">Hạn chót: 20/06/2025 (còn 7 ngày)</div>
+                </div>
+                
+                <div class="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                  <div class="text-sm font-medium text-yellow-800">Xác nhận danh sách khách mời</div>
+                  <div class="text-xs text-gray-700 mt-1">Hạn chót: 30/09/2025 (còn 108 ngày)</div>
+                </div>
+                
+                <div class="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                  <div class="text-sm font-medium text-blue-800">Họp bàn kịch bản chi tiết</div>
+                  <div class="text-xs text-gray-700 mt-1">Ngày 25/06/2025 (còn 12 ngày)</div>
+                </div>
+                
+                <div class="p-3 bg-green-50 rounded-lg border-l-4 border-green-500">
+                  <div class="text-sm font-medium text-green-800">Chụp ảnh cưới</div>
+                  <div class="text-xs text-gray-700 mt-1">Ngày 15/08/2025 (còn 63 ngày)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="chartScript">
+document.addEventListener('DOMContentLoaded', function() {
+  // Task Progress Chart
+  const taskProgressChart = echarts.init(document.getElementById('taskProgressChart'));
+  const taskOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#f0f0f0',
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    legend: {
+      orient: 'vertical',
+      right: 10,
+      top: 'center',
+      data: ['Đã hoàn thành', 'Đang thực hiện', 'Chưa bắt đầu'],
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    series: [
+      {
+        name: 'Tiến độ công việc',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 8,
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        label: {
+          show: false
+        },
+        emphasis: {
+          label: {
+            show: false
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 30, name: 'Đã hoàn thành', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+          { value: 45, name: 'Đang thực hiện', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+          { value: 25, name: 'Chưa bắt đầu', itemStyle: { color: 'rgba(251, 191, 114, 1)' } }
+        ]
+      }
+    ]
+  };
+  taskProgressChart.setOption(taskOption);
+  
+  // Budget Chart
+  const budgetChart = echarts.init(document.getElementById('budgetChart'));
+  const budgetOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      },
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#f0f0f0',
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        data: ['Tổng ngân sách', 'Đã chi', 'Còn lại'],
+        axisTick: {
+          alignWithLabel: true
+        },
+        axisLabel: {
+          color: '#1f2937'
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        axisLabel: {
+          formatter: '{value} tr',
+          color: '#1f2937'
+        }
+      }
+    ],
+    series: [
+      {
+        name: 'Ngân sách',
+        type: 'bar',
+        barWidth: '60%',
+        data: [
+          {value: 100, itemStyle: {color: 'rgba(87, 181, 231, 1)'}},
+          {value: 35, itemStyle: {color: 'rgba(251, 191, 114, 1)'}},
+          {value: 65, itemStyle: {color: 'rgba(141, 211, 199, 1)'}}
+        ],
+        itemStyle: {
+          borderRadius: 4
+        }
+      }
+    ]
+  };
+  budgetChart.setOption(budgetOption);
+  
+  // Guest Chart
+  const guestChart = echarts.init(document.getElementById('guestChart'));
+  const guestOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#f0f0f0',
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    legend: {
+      show: false
+    },
+    series: [
+      {
+        name: 'Khách mời',
+        type: 'pie',
+        radius: ['40%', '70%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 8,
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        label: {
+          show: false
+        },
+        emphasis: {
+          label: {
+            show: false
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 120, name: 'Đã xác nhận', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+          { value: 80, name: 'Chờ xác nhận', itemStyle: { color: 'rgba(251, 191, 114, 1)' } }
+        ]
+      }
+    ]
+  };
+  guestChart.setOption(guestOption);
+  
+  // Resize charts when window size changes
+  window.addEventListener('resize', function() {
+    if (taskProgressChart) taskProgressChart.resize();
+    if (budgetChart) budgetChart.resize();
+    if (guestChart) guestChart.resize();
+  });
+});
+</script>
+
+</body>
+</html>
