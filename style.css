@@ -2,12 +2,12 @@
 
 /* Biến màu và font chữ (giữ nguyên) */
 :root {
-    --sidebar-bg-color: linear-gradient(to bottom right, #1d4ed8, #38bdf8);
-    --body-bg-color: #f8fafc;
+    --sidebar-bg-color: #0079FF;
+    --body-bg-color: #0079ff;
     --text-color: #ffffff;
     --text-color-dark: #000000;
     --hover-color: #dce4e3;
-    --user-bg-color: #8ed7c6;
+    --user-bg-color: #83deff;
     --sidebar-width-collapsed: 80px;
     --sidebar-width-expanded: 260px;
     --mobile-header-height: 60px; /* Thêm biến chiều cao header mobile */
