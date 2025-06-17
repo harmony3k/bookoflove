@@ -4,7 +4,7 @@
 :root {
     --sidebar-bg-color: #007bff; /* green */
     --body-bg-color: #f8fafc; /* bg-gray-50 */
-    --text-color: #ffffff;
+    --text-color: #000000;
     --text-color-dark: #ffffff;
     --hover-color: #d6f2ff; /* light-grey */
     --user-bg-color: #b5eaff; /* light-green */
