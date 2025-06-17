@@ -2,11 +2,11 @@
 
 /* Biến màu và font chữ */
 :root {
-    --sidebar-bg-color: #007bff; /* green */
+    --sidebar-bg-color: #007bff; /*blue */
     --body-bg-color: #f8fafc; /* bg-gray-50 */
     --text-color: #b5eaff;
     --text-color-dark: #000000;
-    --hover-color: #d6f2ff; /* light-grey */
+    --hover-color: #b5eaff; /* light-grey */
     --user-bg-color: #b5eaff; /* light-green */
     --sidebar-width-collapsed: 80px;
     --sidebar-width-expanded: 260px;
@@ -109,12 +109,12 @@ input[type="number"]::-webkit-outer-spin-button {
 .menu-link { display: flex; align-items: center; justify-content: center; padding: 0.75rem; border-radius: 8px; gap: 1rem; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; font-weight: 500; white-space: nowrap; }
 .menu-link i { font-size: 1.5rem; min-width: 24px; }
 .menu-link:hover { background-color: var(--user-bg-color); color: var(--text-color-dark); }
-.menu-link.active { background-color: var(--hover-color); color: var(--text-color-dark); font-weight: 700; }
+.menu-link.active { background-color: var(--hover-color); color: var(--sidebar-bg-color); font-weight: 700; }
 .menu-link-text { font-family: 'Inter', sans-serif; display: none; opacity: 0; transition: opacity 0.2s ease; }
 .user-container { background-color: var(--user-bg-color); padding: 1rem; display: flex; align-items: center; justify-content: center; }
 .user-info, .user-details { display: none; opacity: 0; transition: opacity 0.2s ease; }
 .user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
-.logout-link { font-size: 1.5rem; color: var(--text-color-dark); }
+.logout-link { font-size: 1.5rem; color: var(--sidebar-bg-color); }
 .sidebar.active { width: var(--sidebar-width-expanded); }
 .sidebar.active .sidebar-header { justify-content: space-between; }
 .sidebar.active .sidebar-logo-link { display: block; }
