@@ -2,12 +2,12 @@
 
 /* Biến màu và font chữ */
 :root {
-    --sidebar-bg-color: #18c29c; /* green */
+    --sidebar-bg-color: #007bff; /* green */
     --body-bg-color: #f8fafc; /* bg-gray-50 */
     --text-color: #ffffff;
-    --text-color-dark: #084236;
-    --hover-color: #dce4e3; /* light-grey */
-    --user-bg-color: #8ed7c6; /* light-green */
+    --text-color-dark: #ffffff;
+    --hover-color: #d6f2ff; /* light-grey */
+    --user-bg-color: #b5eaff; /* light-green */
     --sidebar-width-collapsed: 80px;
     --sidebar-width-expanded: 260px;
     --mobile-header-height: 60px;
@@ -166,4 +166,8 @@ input[type="number"]::-webkit-outer-spin-button {
     .sidebar.active { transform: translateX(0); box-shadow: 4px 0 15px rgba(0,0,0,0.2); }
     .sidebar.active ~ .sidebar-overlay { display: block; } /* Sử dụng general sibling combinator (~) */
     .dashboard { margin-left: 0; width: 100%; padding-top: var(--mobile-header-height); height: 100vh; }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ae8513a6d0762bde9148a6317e26fc96a3dcf797
